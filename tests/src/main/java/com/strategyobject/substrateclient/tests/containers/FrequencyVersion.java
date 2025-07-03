@@ -1,8 +1,8 @@
 package com.strategyobject.substrateclient.tests.containers;
 
 public class FrequencyVersion {
-    public static final String CURRENT_VERSION = "v1.16.2";
-    public static final Long SPEC = 154L;
+    public static final String CURRENT_VERSION = "v1.17.0";
+    public static final Long SPEC = 167L;
 
     private FrequencyVersion() {
     }
