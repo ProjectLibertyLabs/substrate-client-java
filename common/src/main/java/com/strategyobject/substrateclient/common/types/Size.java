@@ -6,6 +6,7 @@ public interface Size {
     Zero zero = new Zero();
     Of32 of32 = new Of32();
     Of64 of64 = new Of64();
+    Of65 of65 = new Of65();
     Of96 of96 = new Of96();
     Of128 of128 = new Of128();
     Of256 of256 = new Of256();
@@ -28,6 +29,13 @@ public interface Size {
         @Override
         public int getValue() {
             return 64;
+        }
+    }
+
+    class Of65 implements Size {
+        @Override
+        public int getValue() {
+            return 65;
         }
     }
 
