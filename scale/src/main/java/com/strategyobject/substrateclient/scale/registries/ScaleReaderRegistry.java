@@ -59,7 +59,7 @@ public class ScaleReaderRegistry {
         register(new Union10Reader(), Union10.class, ScaleType.Union10.class);
         register(new Union11Reader(), Union11.class, ScaleType.Union11.class);
         register(new Union12Reader(), Union12.class, ScaleType.Union12.class);
-        register(new PairReader(), Pair.class);
+        register(new PairReader(), Pair.class, ScaleType.Pair.class);
         register(new VecReader(), ScaleType.Vec.class, List.class);
         register(new ArrayReader(), Array.class);
         register(new BooleanArrayReader(), boolean[].class);

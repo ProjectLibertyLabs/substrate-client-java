@@ -60,7 +60,7 @@ public class ScaleWriterRegistry {
         register(new Union10Writer(), Union10.class, ScaleType.Union10.class);
         register(new Union11Writer(), Union11.class, ScaleType.Union11.class);
         register(new Union12Writer(), Union12.class, ScaleType.Union12.class);
-        register(new PairWriter(), Pair.class);
+        register(new PairWriter(), Pair.class, ScaleType.Pair.class);
         register(new VecWriter(), ScaleType.Vec.class, List.class);
         register(new HeterogeneousVecWriter(this), ScaleType.HeterogeneousVec.class, HeterogeneousVecWriter.HeterogeneousVec.class);
         register(new ArrayWriter(), Array.class);
