@@ -228,4 +228,8 @@ public interface State {
     @RpcCall("call")
     @Scale
     CompletableFuture<IndexU32> retrieveAccountNonce(String method, @Scale AccountIdScaleWrapper addressId);
+
+    @RpcCall("call")
+    @Scale
+    CompletableFuture<Byte[]> getRegisteredEntitiesByName(String method, @Scale String name);
 }

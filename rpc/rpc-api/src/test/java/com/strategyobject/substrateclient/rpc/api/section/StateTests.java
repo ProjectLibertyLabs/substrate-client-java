@@ -204,6 +204,18 @@ class StateTests {
         }
     }
 
+    @Test
+    public void getRegisteredEntitiesByName() throws Exception {
+        try (val wsProvider = connect()) {
+            val state = TestsHelper.createSectionFactory(wsProvider).create(State.class);
+            val method = "SchemasRuntimeApi_get_registered_entities_by_name";
+            val intentName = "frequency.default-token-address";
+
+            CompletableFuture<Byte[]> deferredResult = state.getRegisteredEntitiesByName(method, intentName);
+            deferredResult.get();
+        }
+    }
+
     private WsProvider connect() throws Exception {
         val wsProvider = WsProvider.builder()
                 .setEndpoint(substrate.getWsAddress())
