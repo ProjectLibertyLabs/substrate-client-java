@@ -212,15 +212,31 @@ class StateTests {
             val intentName = "frequency.default-token-address";
 
             // WHEN
-            val deferredResult = state.getRegisteredEntitiesByName(method, intentName).get();
+            val result = state.getRegisteredEntitiesByName(method, intentName).get();
 
             // THEN
-            val response = deferredResult.get().get(0);
+            val response = result.get().get(0);
             Assertions.assertEquals(intentName, response.getName());
 
             val entityId = response.getEntityId();
             Assertions.assertEquals(EntityIdentifierKind.INTENT, entityId.getKind());
             Assertions.assertEquals(21, entityId.getId());
+        }
+    }
+
+    @Test
+    public void getRegisteredEntitiesByNameReturnsNone() throws Exception {
+        try (val wsProvider = connect()) {
+            // GIVEN
+            val state = TestsHelper.createSectionFactory(wsProvider).create(State.class);
+            val method = "SchemasRuntimeApi_get_registered_entities_by_name";
+            val intentName = "frequency.does-not-exist";
+
+            // WHEN
+            val result = state.getRegisteredEntitiesByName(method, intentName).get();
+
+            // THEN
+            Assertions.assertFalse(result.isPresent());
         }
     }
 
