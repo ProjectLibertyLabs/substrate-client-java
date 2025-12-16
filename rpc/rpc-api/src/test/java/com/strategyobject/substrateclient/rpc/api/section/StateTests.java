@@ -5,10 +5,7 @@ import com.strategyobject.substrateclient.crypto.KeyPair;
 import com.strategyobject.substrateclient.rpc.api.AccountId;
 import com.strategyobject.substrateclient.rpc.api.AccountIdScaleWrapper;
 import com.strategyobject.substrateclient.rpc.api.AddressId;
-import com.strategyobject.substrateclient.rpc.api.primitives.BlockNumber;
-import com.strategyobject.substrateclient.rpc.api.primitives.Index;
-import com.strategyobject.substrateclient.rpc.api.primitives.IndexU32;
-import com.strategyobject.substrateclient.rpc.api.primitives.NameLookupResponse;
+import com.strategyobject.substrateclient.rpc.api.primitives.*;
 import com.strategyobject.substrateclient.rpc.api.storage.StorageKey;
 import com.strategyobject.substrateclient.tests.containers.FrequencyVersion;
 import com.strategyobject.substrateclient.tests.containers.TestSubstrateContainer;
@@ -209,12 +206,21 @@ class StateTests {
     @Test
     public void getRegisteredEntitiesByName() throws Exception {
         try (val wsProvider = connect()) {
+            // GIVEN
             val state = TestsHelper.createSectionFactory(wsProvider).create(State.class);
             val method = "SchemasRuntimeApi_get_registered_entities_by_name";
             val intentName = "frequency.default-token-address";
 
+            // WHEN
             val deferredResult = state.getRegisteredEntitiesByName(method, intentName).get();
-            System.out.println(deferredResult.toString());
+
+            // THEN
+            val response = deferredResult.get().get(0);
+            Assertions.assertEquals(intentName, response.getName());
+
+            val entityId = response.getEntityId();
+            Assertions.assertEquals(EntityIdentifierKind.INTENT, entityId.getKind());
+            Assertions.assertEquals(21, entityId.getId());
         }
     }
 

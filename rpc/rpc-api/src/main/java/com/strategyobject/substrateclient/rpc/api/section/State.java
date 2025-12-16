@@ -11,9 +11,11 @@ import com.strategyobject.substrateclient.rpc.api.primitives.NameLookupResponse;
 import com.strategyobject.substrateclient.rpc.api.storage.StorageChangeSet;
 import com.strategyobject.substrateclient.rpc.api.storage.StorageData;
 import com.strategyobject.substrateclient.rpc.api.storage.StorageKey;
+import com.strategyobject.substrateclient.scale.ScaleType;
 import com.strategyobject.substrateclient.scale.annotation.Scale;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.BiConsumer;
 import java.util.function.Supplier;
@@ -232,5 +234,5 @@ public interface State {
 
     @RpcCall("call")
     @Scale
-    CompletableFuture<NameLookupResponse> getRegisteredEntitiesByName(String method, @Scale String name);
+    CompletableFuture<Optional<List<NameLookupResponse>>> getRegisteredEntitiesByName(String method, @Scale String name);
 }
