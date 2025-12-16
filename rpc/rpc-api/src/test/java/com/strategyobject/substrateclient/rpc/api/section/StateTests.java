@@ -8,6 +8,7 @@ import com.strategyobject.substrateclient.rpc.api.AddressId;
 import com.strategyobject.substrateclient.rpc.api.primitives.BlockNumber;
 import com.strategyobject.substrateclient.rpc.api.primitives.Index;
 import com.strategyobject.substrateclient.rpc.api.primitives.IndexU32;
+import com.strategyobject.substrateclient.rpc.api.primitives.NameLookupResponse;
 import com.strategyobject.substrateclient.rpc.api.storage.StorageKey;
 import com.strategyobject.substrateclient.tests.containers.FrequencyVersion;
 import com.strategyobject.substrateclient.tests.containers.TestSubstrateContainer;
@@ -22,6 +23,7 @@ import org.testcontainers.containers.wait.strategy.Wait;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
+import java.lang.System;
 import java.math.BigInteger;
 import java.util.Collections;
 import java.util.concurrent.CompletableFuture;
@@ -211,8 +213,8 @@ class StateTests {
             val method = "SchemasRuntimeApi_get_registered_entities_by_name";
             val intentName = "frequency.default-token-address";
 
-            CompletableFuture<Byte[]> deferredResult = state.getRegisteredEntitiesByName(method, intentName);
-            deferredResult.get();
+            val deferredResult = state.getRegisteredEntitiesByName(method, intentName).get();
+            System.out.println(deferredResult.toString());
         }
     }
 

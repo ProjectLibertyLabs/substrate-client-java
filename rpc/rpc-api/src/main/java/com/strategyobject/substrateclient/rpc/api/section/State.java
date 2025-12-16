@@ -7,6 +7,7 @@ import com.strategyobject.substrateclient.rpc.api.*;
 import com.strategyobject.substrateclient.rpc.api.primitives.BlockHash;
 import com.strategyobject.substrateclient.rpc.api.primitives.Hash;
 import com.strategyobject.substrateclient.rpc.api.primitives.IndexU32;
+import com.strategyobject.substrateclient.rpc.api.primitives.NameLookupResponse;
 import com.strategyobject.substrateclient.rpc.api.storage.StorageChangeSet;
 import com.strategyobject.substrateclient.rpc.api.storage.StorageData;
 import com.strategyobject.substrateclient.rpc.api.storage.StorageKey;
@@ -231,5 +232,5 @@ public interface State {
 
     @RpcCall("call")
     @Scale
-    CompletableFuture<Byte[]> getRegisteredEntitiesByName(String method, @Scale String name);
+    CompletableFuture<NameLookupResponse> getRegisteredEntitiesByName(String method, @Scale String name);
 }
