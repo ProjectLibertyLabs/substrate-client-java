@@ -11,8 +11,10 @@ jni = "0.19.0"
 curve25519-dalek = { version = "2.1.0", default-features = false }
 schnorrkel = { version = "0.9.1", features = ["preaudit_deprecated", "u64_backend"] }
 hex = "0.4.3"
-proc-macro2 = "1.0.101"
 
 [dev-dependencies]
 hex-literal = "0.2.0"
 rand = { version = "0.7.3", features = ["wasm-bindgen"] }
+
+[patch.crates-io]
+proc-macro2 = { version = "1.0.101" }
