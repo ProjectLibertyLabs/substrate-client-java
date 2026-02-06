@@ -15,6 +15,10 @@ jobs:
       packages: write
 
     steps:
+      - name: Install Rust 1.68.0
+        run: rustup install 1.68.0
+      - name: Temporarily modify the rust toolchain version
+        run: rustup override set 1.68.0
       - uses: actions/checkout@v4
       - uses: actions/cache@v4
         with:
