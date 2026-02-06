@@ -28,10 +28,6 @@ jobs:
           key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
       - uses: DeterminateSystems/nix-installer-action@main
       - uses: DeterminateSystems/flakehub-cache-action@main
-      - name: Install Rust 1.68.0
-        run: rustup install 1.68.0
-      - name: Temporarily modify the rust toolchain version
-        run: rustup override set 1.68.0
       - name: Build with Gradle
         run: nix develop --ignore-environment --command bash -c "./gradlew build"
         env:
