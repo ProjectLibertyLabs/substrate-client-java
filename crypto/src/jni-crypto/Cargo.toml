@@ -17,4 +17,4 @@ hex-literal = "0.2.0"
 rand = { version = "0.7.3", features = ["wasm-bindgen"] }
 
 [patch.crates-io]
-proc-macro2 = { version = "1.0.101" }
+proc-macro2 = { version = "=1.0.101" }
